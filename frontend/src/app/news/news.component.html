@@ -1,0 +1,53 @@
+<form (ngSubmit)="searchNews()">
+  <div class="form-group">
+    <label for="topic">Topic</label>
+    <input type="text" class="form-control" id="topic" name="topic" [(ngModel)]="topic">
+  </div>
+  <div class="form-group">
+    <label for="fromDate">From Date</label>
+    <input type="date" class="form-control" id="fromDate" name="fromDate" [(ngModel)]="fromDate">
+  </div>
+  <div class="form-group">
+    <label for="toDate">To Date</label>
+    <input type="date" class="form-control" id="toDate" name="toDate" [(ngModel)]="toDate">
+  </div>
+  <div class="form-group">
+    <label for="sortBy">Sort By</label>
+    <select class="form-control" id="sortBy" name="sortBy" [(ngModel)]="sortBy">
+      <option value="relevancy">Relevancy</option>
+      <option value="popularity">Popularity</option>
+      <option value="publishedAt">Published At</option>
+    </select>
+  </div>
+  <button type="submit" class="submit_button">Submit</button>
+</form>
+
+<div *ngIf="newsList.length > 0">
+
+  <div class="container">
+    <button class="render_news" (click)="nextNews()">
+      < </button>
+        <div *ngFor="let news of getNewsSubList()">
+          <div class="card">
+            <div class="card__header">
+              <img [src]="news.urlToImage" class="card__image" width="600">
+            </div>
+            <div class="card__body">
+              <h4>{{ news.title }}</h4>
+              <p>{{ news.description.slice(0, 200) + '...' }}</p>
+            </div>
+            <div class="card__footer">
+              <div class="user">
+                <div class="user__info">
+                  <h5>{{ news.author }}</h5>
+                  <small>{{ news.publishedAt }}</small>
+                  <a href="{{ news.url }}" target="_blank">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="render_news" (click)="previousNews()">
+          > </button>
+  </div>
+</div>

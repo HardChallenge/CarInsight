@@ -1,0 +1,246 @@
+<table class="form-container">
+  <tr>
+    <td>
+      <h1>GET by id</h1>
+      <form (ngSubmit)="submitGetId()">
+        <div class="form-group">
+          <label for="id">ID</label>
+          <input type="number" class="form-control" id="getAll_id" name="id" [(ngModel)]="id" required>
+        </div>
+        <button type="submit" class="submit_button">Submit</button>
+      </form>
+
+      <div *ngIf='responseData.get("GetById")?.error'>
+        <p>Error occured: {{ responseData.get("GetById")?.error }}</p>
+      </div>
+      <div *ngIf='responseData.get("GetById")?.data'>
+        <pre>{{ responseData.get("GetById")?.data | json }}</pre>
+      </div>
+    </td>
+
+    <td>
+      <h1>GET all</h1>
+      <form (ngSubmit)="submitGetAll()">
+        <button type="submit" class="submit_button">Submit</button>
+      </form>
+
+      <div *ngIf='responseData.get("GetAll")?.error'>
+        <p>Error occured: {{ responseData.get("GetAll")?.error }}</p>
+      </div>
+      <div *ngIf='responseData.get("GetAll")?.data'>
+        <pre>{{ responseData.get("GetAll")?.data[getAllIndex] | json }}</pre>
+        <button class="submit_button" (click)="previousObject('GetAll')">
+          < </button>
+            <button class="submit_button" (click)="nextObject('GetAll')">></button>
+      </div>
+    </td>
+
+    <td>
+      <h1>DELETE by id</h1>
+      <form (ngSubmit)="submitDeleteId()">
+        <div class="form-group">
+          <label for="delete_id">ID</label>
+          <input type="number" class="form-control" id="delete_id" name="delete_id" [(ngModel)]="id" required>
+        </div>
+        <button type="submit" class="submit_button">Submit</button>
+      </form>
+
+      <div *ngIf='responseData.get("DeleteById")?.error'>
+        <p>Error occured: {{ responseData.get("DeleteById")?.error }}</p>
+      </div>
+      <div *ngIf='responseData.get("DeleteById")?.data'>
+        <pre>{{ responseData.get("DeleteById")?.data | json }}</pre>
+      </div>
+    </td>
+
+    <td>
+      <h1>DELETE by brand</h1>
+      <form (ngSubmit)="submitDeleteBrand()">
+        <div class="form-group">
+          <label for="delete_brand">Brand</label>
+          <input type="text" class="form-control" id="delete_brand" name="delete_brand" [(ngModel)]="brand" required>
+        </div>
+        <button type="submit" class="submit_button">Submit</button>
+      </form>
+
+      <div *ngIf='responseData.get("DeleteByBrand")?.error'>
+        <p>Error occured: {{ responseData.get("DeleteByBrand")?.error }}</p>
+      </div>
+      <div *ngIf='responseData.get("DeleteByBrand")?.data'>
+        <pre>{{ responseData.get("DeleteByBrand")?.data | json }}</pre>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <h1>POST new</h1>
+      <form (ngSubmit)="submitPostOne()">
+        <div class="form-group">
+          <label for="post_type">Type</label>
+          <input type="text" class="form-control" id="post_type" name="post_type" [(ngModel)]="type" required>
+        </div>
+
+        <div class="form-group">
+          <label for="post_brand">Brand</label>
+          <input type="text" class="form-control" id="post_brand" name="post_brand" [(ngModel)]="brand" required>
+        </div>
+
+        <div class="form-group">
+          <label for="post_year">Year</label>
+          <input type="number" class="form-control" id="post_year" name="post_year" [(ngModel)]="year" required>
+        </div>
+
+        <div class="form-group">
+          <label for="post_color">Color</label>
+          <input type="text" class="form-control" id="post_color" name="post_color" [(ngModel)]="color" required>
+        </div>
+
+        <div class="form-group">
+          <label for="post_vin">VIN</label>
+          <input type="text" class="form-control" id="post_vin" name="post_vin" [(ngModel)]="vin" required>
+        </div>
+        <button type="submit" class="submit_button">Submit</button>
+      </form>
+
+      <div *ngIf='responseData.get("PostOne")?.error'>
+        <p>Error occured: {{ responseData.get("PostOne")?.error }}</p>
+      </div>
+
+      <div *ngIf='responseData.get("PostOne")?.data'>
+        <pre>{{ responseData.get("PostOne")?.data | json }}</pre>
+      </div>
+    </td>
+
+    <td>
+      <h1>POST random</h1>
+      <form (ngSubmit)="submitPostRandom()">
+        <div class="form-group">
+          <label for="post_random_count">Count</label>
+          <input type="number" class="form-control" id="post_random_count" name="post_random_count" [(ngModel)]="count"
+            required>
+        </div>
+        <button type="submit" class="submit_button">Submit</button>
+      </form>
+
+      <div *ngIf='responseData.get("PostRandom")?.error'>
+        <p>Error occured: {{ responseData.get("PostRandom")?.error }}</p>
+      </div>
+
+      <div *ngIf='responseData.get("PostRandom")?.data'>
+        <pre>{{ responseData.get("PostRandom")?.data[postRandomIndex] | json }}</pre>
+        <button class="submit_button" (click)="previousObject('PostRandom')">
+          < </button>
+            <button class="submit_button" (click)="nextObject('PostRandom')">></button>
+      </div>
+    </td>
+
+    <td>
+      <h1>PUT by id</h1>
+      <form (ngSubmit)="submitPutId()">
+        <div class="form-group">
+          <label for="put_id">ID</label>
+          <input type="number" class="form-control" id="put_id" name="put_id" [(ngModel)]="id" required>
+        </div>
+
+        <div class="form-group">
+          <label for="put_type">Type</label>
+          <input type="text" class="form-control" id="put_type" name="put_type" [(ngModel)]="type" required>
+        </div>
+
+        <div class="form-group">
+          <label for="put_brand">Brand</label>
+          <input type="text" class="form-control" id="put_brand" name="put_brand" [(ngModel)]="brand" required>
+        </div>
+
+        <div class="form-group">
+          <label for="put_year">Year</label>
+          <input type="number" class="form-control" id="put_year" name="put_year" [(ngModel)]="year" required>
+        </div>
+
+        <div class="form-group">
+          <label for="put_color">Color</label>
+          <input type="text" class="form-control" id="put_color" name="put_color" [(ngModel)]="color" required>
+        </div>
+
+        <div class="form-group">
+          <label for="put_vin">VIN</label>
+          <input type="text" class="form-control" id="put_vin" name="put_vin" [(ngModel)]="vin" required>
+        </div>
+        <button type="submit" class="submit_button">Submit</button>
+      </form>
+
+      <div *ngIf='responseData.get("PutById")?.error'>
+        <p>Error occured: {{ responseData.get("PutById")?.error }}</p>
+      </div>
+
+      <div *ngIf='responseData.get("PutById")?.data'>
+        <pre>{{ responseData.get("PutById")?.data | json }}</pre>
+      </div>
+    </td>
+
+    <td>
+      <h1>PUT regenerate</h1>
+      <form (ngSubmit)="submitPutRegenerate()">
+        <div class="form-group">
+          <label for="put_regenerate_count">ID</label>
+          <input type="number" class="form-control" id="put_regenerate_id" name="put_regenerate_id" [(ngModel)]="id"
+            required>
+        </div>
+        <button type="submit" class="submit_button">Submit</button>
+      </form>
+
+      <div *ngIf='responseData.get("PutRegenerate")?.error'>
+        <p>Error occured: {{ responseData.get("PutRegenerate")?.error }}</p>
+      </div>
+      <div *ngIf='responseData.get("PutRegenerate")?.data'>
+        <pre>{{ responseData.get("PutRegenerate")?.data | json }}</pre>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h1>PATCH by id</h1>
+      <form (ngSubmit)="submitPatchId()">
+        <div class="form-group">
+          <label for="patch_id">ID</label>
+          <input type="number" class="form-control" id="patch_id" name="patch_id" [(ngModel)]="id" required>
+        </div>
+
+        <div class="form-group">
+          <label for="patch_type">Type</label>
+          <input type="text" class="form-control" id="patch_type" name="patch_type" [(ngModel)]="type_patch">
+        </div>
+
+        <div class="form-group">
+          <label for="patch_brand">Brand</label>
+          <input type="text" class="form-control" id="patch_brand" name="patch_brand" [(ngModel)]="brand_patch">
+        </div>
+
+        <div class="form-group">
+          <label for="patch_year">Year</label>
+          <input type="number" class="form-control" id="patch_year" name="patch_year" [(ngModel)]="year_patch">
+        </div>
+
+        <div class="form-group">
+          <label for="patch_color">Color</label>
+          <input type="text" class="form-control" id="patch_color" name="patch_color" [(ngModel)]="color_patch">
+        </div>
+
+        <div class="form-group">
+          <label for="patch_vin">VIN</label>
+          <input type="text" class="form-control" id="patch_vin" name="patch_vin" [(ngModel)]="vin_patch">
+        </div>
+        <button type="submit" class="submit_button">Submit</button>
+      </form>
+
+      <div *ngIf='responseData.get("PatchById")?.error'>
+        <p>Error occured: {{ responseData.get("PatchById")?.error }}</p>
+      </div>
+      <div *ngIf='responseData.get("PatchById")?.data'>
+        <pre>{{ responseData.get("PatchById")?.data | json }}</pre>
+      </div>
+    </td>
+  </tr>
+
+</table>

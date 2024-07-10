@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homework2 Cloud Computing</title>
+  <link rel="stylesheet" href="app.component.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+
+      <button id="nav_button"><a id="nav_text" href="#backend">Backend API</a></button>
+      <button id="nav_button"><a id="nav_text" href="#carInfo">Car Info API</a></button>
+      <button id="nav_button"><a id="nav_text" href="#news">News API</a></button>
+    </nav>
+  </header>
+  <main>
+    <section id="backend">
+      <app-backend-form></app-backend-form>
+    </section>
+
+    <section id="carInfo">
+      <app-car-info></app-car-info>
+    </section>
+
+    <section id="news">
+      <app-news></app-news>
+    </section>
+
+  </main>
+  <footer>
+    <p>© Homework2 Cloud Computing</p>
+  </footer>
+</body>
+
+</html>
