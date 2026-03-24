@@ -50,13 +50,13 @@ The application stands out with its ability to query and display data from two e
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/HardChallenge/ShopGuide.git
+git clone https://github.com/HardChallenge/CarInsight.git
 ```
 
 2. Change the directory:
 
 ```bash
-cd ShopGuide
+cd CarInsight
 ```
 
 3. Start backend:
